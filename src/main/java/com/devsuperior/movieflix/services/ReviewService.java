@@ -3,8 +3,6 @@ package com.devsuperior.movieflix.services;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -45,8 +43,8 @@ public class ReviewService {
 	public ReviewDTO insert(ReviewDTO dto) {
 		Review entity = new Review();
 		entity.setText(dto.getText());
-		entity.setMovie(dto.getMovie());
-		entity.setUser(dto.getUser());
+		entity.setMovie(new Movie(dto.getMovieId(), null, null, null, null, null, null));
+		entity.setUser(new User(dto.getUserId(), dto.getUserName(), dto.getUserEmail(), null, null));
 		entity = repository.save(entity);
 		return new ReviewDTO(entity);
 	}
@@ -56,8 +54,8 @@ public class ReviewService {
 		try {
 		     Review entity = repository.getOne(id);
 		     entity.setText(dto.getText());
-		     entity.setMovie(dto.getMovie());
-		     entity.setUser(dto.getUser());
+		     entity.setMovie(new Movie(dto.getMovieId(), null, null, null, null, null, null));
+		     entity.setUser(new User(dto.getUserId(), dto.getUserName(), dto.getUserEmail(), null, null));
 		     entity = repository.save(entity);
 		     return new ReviewDTO(entity);
 		}

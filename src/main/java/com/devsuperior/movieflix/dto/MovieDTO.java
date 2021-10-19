@@ -1,14 +1,8 @@
 package com.devsuperior.movieflix.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.validation.constraints.Size;
-
-import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
-import com.devsuperior.movieflix.entities.Review;
 
 public class MovieDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -18,25 +12,23 @@ public class MovieDTO implements Serializable{
 	private String subTitle;
 	private Integer year;
 	private String imgUrl;
-	
-	 
 	private String synopsis;
-	
-	private Genre genre;
-	
-	private List<Review> reviews = new ArrayList<>();
+	private Long genreId;
+	private String genreName;
 	
 	public MovieDTO() {
 	}
 
-	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Genre genre) {
+	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Long genreId, String genreName) {
 		this.id = id;
 		this.title = title;
 		this.subTitle = subTitle;
 		this.year = year;
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
-		this.genre = genre;
+		this.genreId = genreId;
+		this.genreName = genreName;
+		
 	}
 	
 	public MovieDTO(Movie entity) {
@@ -46,13 +38,10 @@ public class MovieDTO implements Serializable{
 		year = entity.getYear();
 		imgUrl = entity.getImgUrl();
 		synopsis = entity.getSynopsis();
-		genre = entity.getGenre();
+		genreId = entity.getGenre().getId();
+		genreName = entity.getGenre().getName();
+		
 	}
-	
-	//public MovieDTO(Movie entity, List<Genre> genres) {
-		//this(entity);
-	//	genres.forEach(gen -> this.genres.add(new GenreDTO(gen)));
-//	}
 
 	public Long getId() {
 		return id;
@@ -102,15 +91,19 @@ public class MovieDTO implements Serializable{
 		this.synopsis = synopsis;
 	}
 
-	public Genre getGenre() {
-		return genre;
+	public Long getGenreId() {
+		return genreId;
 	}
 
-	public void setGenre(Genre genre) {
-		this.genre = genre;
+	public void setGenreId(Long genreID) {
+		this.genreId = genreID;
 	}
 
-	public List<Review> getReviews() {
-		return reviews;
+	public String getGenreName() {
+		return genreName;
+	}
+
+	public void setGenreName(String genreName) {
+		this.genreName = genreName;
 	}
 }
