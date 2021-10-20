@@ -5,8 +5,6 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,6 @@ import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.entities.User;
 import com.devsuperior.movieflix.repositories.ReviewRepository;
-import com.devsuperior.movieflix.services.exceptions.DatabaseException;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -26,14 +23,18 @@ public class ReviewService {
 	@Autowired
 	private ReviewRepository repository; 
 	
+	@Autowired
+	private AuthService authService;
+	
 	@Transactional(readOnly = true)
 	public Page<ReviewDTO> findAllPaged(Pageable pageable) {
 		Page<Review> list = repository.findAll(pageable);
 		return list.map(x -> new ReviewDTO(x));
 	}
-
+	
 	@Transactional(readOnly = true)
 	public ReviewDTO findById(Long id) {
+		authService.validateSelfOrAdmin(id);
 		Optional<Review> obj = repository.findById(id);
 		Review entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		return new ReviewDTO(entity);
@@ -63,17 +64,4 @@ public class ReviewService {
 			throw new ResourceNotFoundException("Id not found " + id);
 		}
 	}
-
-	public void delete(Long id) {
-		try {
-		     repository.deleteById(id);
-		}
-		catch(EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Id not found " + id);
-		}
-		catch(DataIntegrityViolationException e) {
-			throw new DatabaseException("Integrity violation");
-		}
-	}
-
 }
