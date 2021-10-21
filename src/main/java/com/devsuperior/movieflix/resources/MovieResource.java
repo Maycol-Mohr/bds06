@@ -1,8 +1,8 @@
 package com.devsuperior.movieflix.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.movieflix.dto.MovieDTO;
+import com.devsuperior.movieflix.dto.NewMovieDTO;
 import com.devsuperior.movieflix.services.MovieService;
 
 @RestController
@@ -20,11 +21,33 @@ public class MovieResource {
 	@Autowired
 	private MovieService service;
 	
+	//@GetMapping
+	//public ResponseEntity<List<NewMovieDTO>> findAll() {
+		//List<NewMovieDTO> list = service.findAll();		
+		//return ResponseEntity.ok().body(list);
+	//}
+	
 	@GetMapping
-	public ResponseEntity<Page<MovieDTO>> findAll(Pageable pageable) {
-		Page<MovieDTO> list = service.findAllPaged(pageable);
+	public ResponseEntity<List<NewMovieDTO>> findByGenre() {
+		List<NewMovieDTO> list = service.findByGenre();	
 		return ResponseEntity.ok().body(list);
 	}
+	
+	//@GetMapping
+	//public ResponseEntity<List<NewMovieReviewDTO>> findMovieReview() {
+		//List<NewMovieReviewDTO> list = service.findById(null);
+		//return ResponseEntity.ok().body(list);
+	//}
+	
+	//@GetMapping
+	//public ResponseEntity<List<NewMovieReviewDTO>> findMovieReviews() {
+		//List<NewMovieReviewDTO> list = service.findAllPaged(null);@GetMapping
+		//public ResponseEntity<List<NewMovieReviewDTO>> findByGenre() {
+			//List<NewMovieDTO> list = service.findByGenre();	
+			//return ResponseEntity.ok().body(list);
+		//}
+		//return ResponseEntity.ok().body(list);
+	//}
 	
 	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
 	@GetMapping(value = "/{id}")
