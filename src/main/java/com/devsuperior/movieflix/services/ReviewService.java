@@ -60,9 +60,7 @@ public class ReviewService {
 		     entity.setMovie(movieRepository.getOne(dto.getMovieId()));
 		     entity.setUser(authService.authenticated());
 		     entity = repository.save(entity);
-			 return new ReviewDTO(entity);
-		  
-		     
+			 return new ReviewDTO(entity);  
 		}
 		catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not found " + id);
