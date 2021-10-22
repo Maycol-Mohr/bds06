@@ -1,5 +1,7 @@
 package com.devsuperior.movieflix.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +22,45 @@ public class GenreResource {
 	@Autowired
 	private GenreService service;
 	
+	//@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
+	//@GetMapping
+	//public ResponseEntity<Page<GenreDTO>> findAll(Pageable pageable) {
+		//Page<GenreDTO> page = service.findAllPaged(pageable);
+		//return ResponseEntity.ok().body(page);
+	//}
+	
 	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
 	@GetMapping
-	public ResponseEntity<Page<GenreDTO>> findAll(Pageable pageable) {
-		Page<GenreDTO> page = service.findAllPaged(pageable);
-		return ResponseEntity.ok().body(page);
+	public ResponseEntity<List<GenreDTO>> findAll() {
+		List<GenreDTO> list = service.findAll();		
+		return ResponseEntity.ok().body(list);
 	}
+	
+	//@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
+	//@GetMapping
+	//public ResponseEntity<GenreDTO> findAll( @RequestBody GenreDTO dto) {
+		//dto = service.findAllPaged(dto);      
+		//URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+		  //      .buildAndExpand(dto.getId()).toUri();
+	//	return ResponseEntity.created(uri).body(dto);
+	//}
+	
+	
+	//@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
+	//@GetMapping
+//	public ResponseEntity<Page<GenreDTO>> findAll(
+	         // 	@RequestParam(value = "id", defaultValue = "") Long id,
+	       //   	@RequestParam(value = "name", defaultValue = "") String name,
+	     //     	Pageable pageable) {
+	   	
+	   //	Page<GenreDTO> list = service.findAllPaged(pageable);         	
+	  // 	return ResponseEntity.ok().body(list);
+	//}
+	
+	
+	
+	
+	
 	
 	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
 	@GetMapping(value = "/{id}")
