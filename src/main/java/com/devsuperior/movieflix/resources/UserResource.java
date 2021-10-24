@@ -12,10 +12,4 @@ public class UserResource {
 
 	@Autowired
 	private UserService service;
-
-	//@GetMapping(value = "/profile")
-	//public ResponseEntity<UserDTO> getProfile() {
-		//UserDTO dto = service.getProfile();
-		//return ResponseEntity.ok(dto);
-	//}
 }

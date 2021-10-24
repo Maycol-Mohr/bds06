@@ -22,34 +22,6 @@ public class MovieResource {
 	@Autowired
 	private MovieService service;
 	
-	/*
-	@GetMapping
-	public ResponseEntity<Page<NewMovieDTO>> findAll(Pageable pageable) {
-		Page<NewMovieDTO> list = service.findAllPagedGenre(pageable);      
-		return ResponseEntity.ok().body(list);
-	}*/
-	
-	//@GetMapping
-	//public ResponseEntity<List<NewMovieDTO>> findAll() {
-		//List<NewMovieDTO> list = service.findAll();		
-		//return ResponseEntity.ok().body(list);
-	//}
-	
-	//@GetMapping
-	//public ResponseEntity<List<NewMovieDTO>> findByGenre() {
-		//List<NewMovieDTO> list = service.findByGenre();	
-	//	return ResponseEntity.ok().body(list);
-	//}
-	
-	
-	
-	
-	
-	
-	
-	//este é correto - desmarcar
-	
-	
 	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
 	@GetMapping
 	public ResponseEntity<Page<NewMovieDTO>> find(
@@ -59,44 +31,6 @@ public class MovieResource {
 	   	Page<NewMovieDTO> list = service.findAllPaged(genreId, pageable);         	
 	   	return ResponseEntity.ok().body(list);
 	}
-	
-	
-	
-	
-	
-	
-	//@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
-	//@GetMapping
-	//public ResponseEntity<List<NewMovieDTO>> findAll() {
-		//List<NewMovieDTO> list = service.findAll();
-		//return ResponseEntity.ok().body(list);
-	//}
-	
-	
-	
-	
-	//@GetMapping
-	//public ResponseEntity<Page<NewMovieDTO>> findMovieByGenre(Pageable pageable) { 
-		//Page<NewMovieDTO> page = service.findMovieByGenre(pageable);
-		
-	//	return ResponseEntity.ok().body(page);
-	//}
-	
-	//@GetMapping
-	//public ResponseEntity<List<NewMovieReviewDTO>> findMovieReview() {
-		//List<NewMovieReviewDTO> list = service.findById(null);
-		//return ResponseEntity.ok().body(list);
-	//}
-	
-	//@GetMapping
-	//public ResponseEntity<List<NewMovieReviewDTO>> findMovieReviews() {
-		//List<NewMovieReviewDTO> list = service.findAllPaged(null);@GetMapping
-		//public ResponseEntity<List<NewMovieReviewDTO>> findByGenre() {
-			//List<NewMovieDTO> list = service.findByGenre();	
-			//return ResponseEntity.ok().body(list);
-		//}
-		//return ResponseEntity.ok().body(list);
-	//}
 	
 	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
 	@GetMapping(value = "/{id}")
