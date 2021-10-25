@@ -24,11 +24,11 @@ public class MovieResource {
 	
 	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
 	@GetMapping
-	public ResponseEntity<Page<NewMovieDTO>> find(
+	public ResponseEntity<Page<NewMovieDTO>> findByGenre(
 	          	@RequestParam(value = "genreId", defaultValue = "0") Long genreId,
 	          	Pageable pageable) {
 	   	
-	   	Page<NewMovieDTO> list = service.findAllPaged(genreId, pageable);         	
+	   	Page<NewMovieDTO> list = service.findByGenre(genreId, pageable);         	
 	   	return ResponseEntity.ok().body(list);
 	}
 	

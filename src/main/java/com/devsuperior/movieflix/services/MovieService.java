@@ -28,12 +28,21 @@ public class MovieService {
 	private GenreRepository genreRepository;
 	
 	
+	//@Transactional(readOnly = true)
+	//public Page<NewMovieDTO> findAllPaged(Pageable pageable) {
+		//Page<Movie> page = repository.findAll(pageable);
+		//return page.map(x -> new NewMovieDTO(x));
+	//}
+	
+	
 	@Transactional(readOnly = true)
-	public Page<NewMovieDTO> findAllPaged(Long genreId, Pageable pageable) {
+	public Page<NewMovieDTO> findByGenre(Long genreId, Pageable pageable) {
 		Genre genre = (genreId == 0) ? null : genreRepository.getOne(genreId);
-		Page<Movie> list = repository.find(genre, pageable);
-		return list.map(x -> new NewMovieDTO(x));
+		Page<Movie> page = repository.findByGenre(genre, pageable);
+		repository.findMoviesAndGenres(page.getContent());
+		return page.map(x -> new NewMovieDTO(x));
 	}
+	
 	
 	@Transactional(readOnly = true)
 	public MovieDTO findById(Long id) {
@@ -42,3 +51,8 @@ public class MovieService {
 		return new MovieDTO(entity);
 	}
 }
+
+
+
+
+
