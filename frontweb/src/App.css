@@ -19,3 +19,15 @@ a:hover {
   text-decoration: none;
   color: unset;
 }
+
+.base-input {
+  border-radius: 10px;
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  height: 50px;
+}
+
+.base-input::placeholder {
+  color: #ffffff;
+}
