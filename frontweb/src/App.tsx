@@ -1,8 +1,10 @@
-import "./assets/styles/custom.scss";
-import "./App.css";
+import './assets/styles/custom.scss';
+import './App.css';
+
+import Routess from 'Routess';
 
 function App() {
-  return <h1>Hello MovieFlix</h1>;
+  return <Routess />;
 }
 
 export default App;

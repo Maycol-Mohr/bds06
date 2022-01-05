@@ -1,0 +1,38 @@
+.home-container {
+  padding: 20px;
+  font-size: 26px;
+  border: 1px solid red;
+}
+
+.home-content-container h1 {
+  padding-top: 81px;
+  padding-left: 96px;
+  font-size: 48px;
+}
+
+.home-content-container p {
+  padding-top: 65px;
+  padding-left: 96px;
+  font-size: 22px;
+}
+
+.home-image-container {
+  padding: 60px 748px 111px 70px;
+}
+
+.home-image-container svg {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 320px) {
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1200px) {
+}
