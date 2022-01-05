@@ -12,6 +12,8 @@ type FormData = {
 const Login = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
+  const history = useHistory();
+
   const onSubmit = (formData: FormData) => {
     console.log(formData);
   };
