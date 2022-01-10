@@ -1,5 +1,3 @@
-import ButtonIcon from 'components/ButtonIcon';
-
 import { useForm } from 'react-hook-form';
 
 import './styles.css';
@@ -11,8 +9,6 @@ type FormData = {
 
 const Login = () => {
   const { register, handleSubmit } = useForm<FormData>();
-
-  const history = useHistory();
 
   const onSubmit = (formData: FormData) => {
     console.log(formData);
@@ -40,9 +36,7 @@ const Login = () => {
             name="senha"
           />
         </div>
-        <div className="login-submit">
-          <ButtonIcon text="FAZER LOGIN" />
-        </div>
+        <div className="login-submit"></div>
       </form>
     </div>
   );
