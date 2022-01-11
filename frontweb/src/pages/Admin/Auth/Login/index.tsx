@@ -24,7 +24,6 @@ const Login = () => {
         <div className="login-submit">
           <button>FAZER LOGIN</button>
         </div>
-        <div className="login-submit"></div>
       </form>
     </div>
   );

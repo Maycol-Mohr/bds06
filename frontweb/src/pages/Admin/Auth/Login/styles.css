@@ -40,6 +40,10 @@
   margin-top: 30px;
 }
 
+.login-submit {
+  height: 230px;
+}
+
 @media (min-width: 576) {
   .login-card {
     padding: 50px;

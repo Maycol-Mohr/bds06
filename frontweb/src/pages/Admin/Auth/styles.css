@@ -12,12 +12,17 @@
 
 .auth-form-container {
   width: 100%;
-  border: 1px solid blue;
+  border: 3px solid blue;
+  height: 590px;
 }
 
 @media (min-width: 576px) {
   .auth-form-container {
     width: 480px;
+  }
+
+  .login-submit {
+    height: 160px;
   }
 }
 
@@ -25,11 +30,19 @@
   .auth-form-container {
     width: 550px;
   }
+
+  .login-submit {
+    height: 150px;
+  }
 }
 
 @media (min-width: 1200px) {
   .auth-container {
     padding: 40px;
+  }
+
+  .login-submit {
+    height: 230px;
   }
 
   .auth-banner-container {
