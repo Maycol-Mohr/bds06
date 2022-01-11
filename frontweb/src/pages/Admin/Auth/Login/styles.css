@@ -3,6 +3,19 @@
   font-size: 16px;
 }
 
+.login-card input {
+  color: #9e9e9e;
+}
+
+.base-input {
+  background-color: #fefefe;
+  color: #9e9e9e;
+}
+
+.base-input::placeholder {
+  color: #9e9e9e;
+}
+
 .login-card h1 {
   font-size: 36px;
   font-weight: normal;
@@ -14,11 +27,15 @@
   margin-bottom: 50px;
 }
 
-.login-submit {
-  font-size: 20px;
-  background-color: #ffc700;
+.login-card button {
   color: #000000;
-  margin: 10px 32px;
+  font-weight: 700;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #ffc700;
+  border: 1px solid red;
+  height: 50px;
+  margin-top: 30px;
 }
 
 @media (min-width: 576) {
