@@ -1,5 +1,6 @@
 import './styles.css';
 import { useForm } from 'react-hook-form';
+import { requestBackendLogin } from 'util/requests';
 
 type FormData = {
   username: string;
@@ -7,10 +8,20 @@ type FormData = {
 };
 
 const Login = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
-    console.log(formData);
+    requestBackendLogin(formData)
+      .then((response) => {
+        console.log('SUCESSO', response);
+      })
+      .catch((error) => {
+        console.log('ERRO', error);
+      });
   };
 
   return (
@@ -19,21 +30,35 @@ const Login = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <input
-            {...register('username')}
+            {...register('username', {
+              required: 'Campo obrigatorio',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Email inválido',
+              },
+            })}
             type="text"
             className="form-control base-input"
             placeholder="Email"
             name="username"
           />
+          <div className="invalid-feedback d-block">
+            {errors.username?.message}
+          </div>
         </div>
         <div className="mb-2">
           <input
-            {...register('password')}
+            {...register('password', {
+              required: 'Campo obrigatorio',
+            })}
             type="password"
             className="form-control base-input "
             placeholder="Senha"
             name="password"
           />
+          <div className="invalid-feedback d-block">
+            {errors.password?.message}
+          </div>
         </div>
         <div className="login-submit">
           <button>FAZER LOGIN</button>
