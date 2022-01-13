@@ -20,7 +20,7 @@ const Routess = () => {
       <Route path="/movies/:movieId">
         <MoviesId />
       </Route>
-      <Redirect from="/admin/auth" to="/admin/auth/login" exact />
+      <Redirect from="/admin/auth" to="/admin/auth/login" />
       <Route path="/admin/auth">
         <Auth />
       </Route>

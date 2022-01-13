@@ -1,10 +1,12 @@
 import { ReactComponent as MainImage } from 'assets/images/main-image.svg';
+import { isAuthenticated } from 'util/requests';
 
 import './styles.css';
 
 function Home() {
   return (
     <div className="home-container">
+      <h1>{isAuthenticated() ? 'autenticado' : 'NAO autenticado'}</h1>
       <div className="home-card">
         <div className="home-content-container">
           <h1>Avalie Filmes</h1>
