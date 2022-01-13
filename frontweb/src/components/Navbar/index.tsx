@@ -46,7 +46,7 @@ function Navbar() {
           <h4>MovieFlix</h4>
         </Link>
 
-        <div>
+        <div className="nav-login-logout">
           {authData.authenticated ? (
             <a href="#sair" onClick={handleLogoutClick}>
               SAIR

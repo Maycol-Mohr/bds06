@@ -10,3 +10,10 @@
 .nav-logo-text:hover {
   color: #000000;
 }
+
+nav-login-logout {
+  color: #000000;
+  margin: 19px 10px 19px 210px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+}
