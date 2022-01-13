@@ -1,14 +1,22 @@
 import './styles.css';
 import { useForm } from 'react-hook-form';
-import { getAuthData, requestBackendLogin, saveAuthData } from 'util/requests';
-import { useHistory } from 'react-router-dom';
+import { requestBackendLogin, saveAuthData } from 'util/requests';
+import { useHistory, useLocation } from 'react-router-dom';
 
 type FormData = {
   username: string;
   password: string;
 };
 
+type LocationState = {
+  from: string;
+};
+
 const Login = () => {
+  const location = useLocation<LocationState>();
+
+  const { from } = location.state || { from: { pathname: '/admin' } };
+
   const {
     register,
     handleSubmit,
@@ -21,10 +29,8 @@ const Login = () => {
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
-        const token = getAuthData().access_token;
-        console.log('TOKEN GERADO ' + token);
-        console.log('SUCESSO', response);
-        history.push('/movies');
+
+        history.replace(from);
       })
       .catch((error) => {
         console.log('ERRO', error);
