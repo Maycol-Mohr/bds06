@@ -1,4 +1,5 @@
 import Navbar from 'components/Navbar';
+import PrivateRoute from 'components/PrivateRoutes';
 import Auth from 'pages/Admin/Auth';
 import Home from 'pages/Home';
 import Movies from 'pages/Movies';
@@ -14,12 +15,12 @@ const Routess = () => {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/movies">
+      <PrivateRoute path="/movies">
         <Movies />
-      </Route>
-      <Route path="/movies/:movieId">
+      </PrivateRoute>
+      <PrivateRoute path="/movies/:movieId">
         <MoviesId />
-      </Route>
+      </PrivateRoute>
       <Redirect from="/admin/auth" to="/admin/auth/login" />
       <Route path="/admin/auth">
         <Auth />
