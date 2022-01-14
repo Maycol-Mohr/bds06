@@ -3,7 +3,7 @@ import qs from 'qs';
 import history from './history';
 import jwtDecode from 'jwt-decode';
 
-type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER';
+export type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER';
 
 export type TokenData = {
   exp: number;
@@ -85,7 +85,7 @@ axios.interceptors.response.use(
     return response;
   },
   function (error) {
-    if (error.response.status === 401 || error.response.status === 401) {
+    if (error.response.status === 401) {
       history.push('/admin/auth');
     }
 
