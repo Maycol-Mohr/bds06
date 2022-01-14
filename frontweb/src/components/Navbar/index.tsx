@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getTokenData, isAuthenticated, TokenData } from 'util/auth';
 import history from 'util/history';
-import {
-  getTokenData,
-  isAuthenticated,
-  removeAuthData,
-  TokenData,
-} from 'util/requests';
+import { removeAuthData } from 'util/storage';
+
 import './styles.css';
 
 type AuthData = {

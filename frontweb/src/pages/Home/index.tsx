@@ -1,5 +1,5 @@
 import { ReactComponent as MainImage } from 'assets/images/main-image.svg';
-import { isAuthenticated } from 'util/requests';
+import { isAuthenticated } from 'util/auth';
 
 import './styles.css';
 
