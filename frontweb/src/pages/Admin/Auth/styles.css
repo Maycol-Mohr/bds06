@@ -2,17 +2,15 @@
   display: flex;
   padding: 20px;
   justify-content: space-around;
-  border: 1px solid red;
 }
 
 .auth-banner-container {
   display: none;
-  border: 1px solid orange;
 }
 
 .auth-form-container {
   width: 100%;
-  border: 3px solid blue;
+
   height: 590px;
 }
 
