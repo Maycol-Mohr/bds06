@@ -1,29 +1,31 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 import history from './history';
-
-export const BASE_URL =
-  process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
-
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'myclientid';
-const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'myclientsecret';
+import { getAuthData } from './storage';
 
 type LoginData = {
   username: string;
   password: string;
 };
-
+type EvaluationData = {
+  movieId: number;
+  text: string;
+};
+export const BASE_URL =
+  process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'myclientid';
+const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'myclientsecret';
+const basicHeader = () =>
+  'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET);
 export const requestBackendLogin = (loginData: LoginData) => {
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    Authorization: 'Basic ' + window.btoa(CLIENT_ID + ':' + CLIENT_SECRET),
+    Authorization: basicHeader(),
   };
-
   const data = qs.stringify({
     ...loginData,
     grant_type: 'password',
   });
-
   return axios({
     method: 'POST',
     baseURL: BASE_URL,
@@ -32,12 +34,29 @@ export const requestBackendLogin = (loginData: LoginData) => {
     headers,
   });
 };
-
 export const requestBackend = (config: AxiosRequestConfig) => {
-  return axios(config);
+  const headers = config.withCredentials
+    ? {
+        ...config.headers,
+        Authorization: 'Bearer ' + getAuthData().access_token,
+      }
+    : config.headers;
+  return axios({ ...config, baseURL: BASE_URL, headers });
 };
-
-// Add a request interceptor
+export const requestPostEvaluation = (evaluationData: EvaluationData) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + getAuthData().access_token,
+  };
+  return axios({
+    method: 'POST',
+    baseURL: BASE_URL,
+    url: '/reviews',
+    data: evaluationData,
+    headers,
+    withCredentials: true,
+  });
+};
 axios.interceptors.request.use(
   function (config) {
     return config;
@@ -46,17 +65,14 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-// Add a response interceptor
 axios.interceptors.response.use(
   function (response) {
     return response;
   },
   function (error) {
-    if (error.response.status === 401) {
-      history.push('/admin/auth');
+    if (error.response.status === 401 || error.response.status === 403) {
+      history.push('/');
     }
-
     return Promise.reject(error);
   }
 );

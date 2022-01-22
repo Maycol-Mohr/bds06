@@ -1,60 +1,58 @@
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getTokenData, isAuthenticated, TokenData } from 'util/auth';
-import history from 'util/history';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from 'AuthContext';
+import { getTokenData, isAuthenticated } from 'util/auth';
 import { removeAuthData } from 'util/storage';
+import history from 'util/history';
 
 import './styles.css';
+import 'bootstrap/js/src/collapse.js';
 
-type AuthData = {
-  authenticated: boolean;
-  tokenData?: TokenData;
-};
-
-function Navbar() {
-  const [authData, setAuthData] = useState<AuthData>({ authenticated: false });
+const Navbar = () => {
+  const { authContextData, setAuthContextData } = useContext(AuthContext);
 
   useEffect(() => {
     if (isAuthenticated()) {
-      setAuthData({
+      console.log('Autenticado');
+      setAuthContextData({
         authenticated: true,
         tokenData: getTokenData(),
       });
     } else {
-      setAuthData({
+      console.log('Nao Autenticado');
+      setAuthContextData({
         authenticated: false,
       });
     }
-  }, []);
+  }, [setAuthContextData]);
 
   const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     removeAuthData();
-    setAuthData({
+    setAuthContextData({
       authenticated: false,
     });
     history.replace('/');
   };
 
   return (
-    <nav className="bg-warning main-nav">
-      <div>
+    <nav className="navbar navbar-expand-md navbar-dark bg-warning main-nav">
+      <div className="container-fluid">
         <Link to="/" className="nav-logo-text">
           <h4>MovieFlix</h4>
         </Link>
-
-        <div className="nav-login-logout">
-          {authData.authenticated ? (
-            <a href="#sair" onClick={handleLogoutClick}>
-              SAIR
-            </a>
-          ) : (
-            <Link to="/admin/auth"></Link>
-          )}
-        </div>
+        {authContextData.authenticated && (
+          <div className="nav-logout">
+            <div className="nav-label">
+              <a href="#logout" onClick={handleLogoutClick}>
+                SAIR
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
