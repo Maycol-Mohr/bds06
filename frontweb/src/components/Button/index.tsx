@@ -8,7 +8,7 @@ const Button = ({ text }: Props) => {
   return (
     <>
       <div className="btn-normal-container">
-        <button className="btn-normal bg-primary">
+        <button className="btn-normal bg-warning">
           <h6>{text}</h6>
         </button>
       </div>

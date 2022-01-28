@@ -2,35 +2,35 @@ import './styles.css';
 import { useForm } from 'react-hook-form';
 import { requestBackendLogin } from 'util/requests';
 import { useHistory, useLocation } from 'react-router-dom';
+import { AuthContext } from 'AuthContext';
 import { saveAuthData } from 'util/storage';
-
+import { useContext } from 'react';
+import { getTokenData } from 'util/auth';
 type FormData = {
   username: string;
   password: string;
 };
-
 type LocationState = {
   from: string;
 };
-
 const Login = () => {
   const location = useLocation<LocationState>();
-
   const { from } = location.state || { from: { pathname: '/movies' } };
-
+  const { setAuthContextData } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-
   const history = useHistory();
-
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
-
+        setAuthContextData({
+          authenticated: true,
+          tokenData: getTokenData(),
+        });
         history.replace(from);
       })
       .catch((error) => {

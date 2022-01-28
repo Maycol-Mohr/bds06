@@ -4,9 +4,9 @@ import { AuthContext } from 'AuthContext';
 import { getTokenData, isAuthenticated } from 'util/auth';
 import { removeAuthData } from 'util/storage';
 import history from 'util/history';
+import 'bootstrap/js/src/collapse.js';
 
 import './styles.css';
-import 'bootstrap/js/src/collapse.js';
 
 const Navbar = () => {
   const { authContextData, setAuthContextData } = useContext(AuthContext);
@@ -38,18 +38,22 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-warning main-nav">
       <div className="container-fluid">
-        <Link to="/" className="nav-logo-text">
+        <Link to="/movies" className="nav-logo-text">
           <h4>MovieFlix</h4>
         </Link>
-        {authContextData.authenticated && (
-          <div className="nav-logout">
-            <div className="nav-label">
+
+        <div className="nav-logout">
+          {authContextData.authenticated && (
+            <>
+              <span className="nav-username">
+                {authContextData.tokenData?.user_name}
+              </span>
               <a href="#logout" onClick={handleLogoutClick}>
                 SAIR
               </a>
-            </div>
-          </div>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );
