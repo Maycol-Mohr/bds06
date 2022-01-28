@@ -41,16 +41,13 @@ const Navbar = () => {
         <Link to="/movies" className="nav-logo-text">
           <h4>MovieFlix</h4>
         </Link>
-
-        <div className="nav-logout">
-          {authContextData.authenticated && (
-            <>
-              <a href="#logout" onClick={handleLogoutClick}>
-                SAIR
-              </a>
-            </>
-          )}
-        </div>
+        {authContextData.authenticated && (
+          <div className="nav-logout">
+            <a href="#logout" onClick={handleLogoutClick}>
+              SAIR
+            </a>
+          </div>
+        )}
       </div>
     </nav>
   );
