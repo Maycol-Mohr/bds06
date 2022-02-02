@@ -4,8 +4,8 @@ import MovieCrud from './MovieCrud';
 
 const Movies = () => {
   return (
-    <div className="my-4 configurar-movies">
-      <div className="configurar-link1">
+    <div>
+      <div>
         <ul>
           <Switch>
             <PrivateRoute path="/movies">

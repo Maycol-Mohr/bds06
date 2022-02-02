@@ -1,5 +1,4 @@
 import { Route, Switch } from 'react-router-dom';
-import Form from './Form';
 import List from './List';
 
 const MovieCrud = () => {
@@ -7,9 +6,6 @@ const MovieCrud = () => {
     <Switch>
       <Route path="/movies" exact>
         <List />
-      </Route>
-      <Route path="/movies/:movieId">
-        <Form />
       </Route>
     </Switch>
   );
