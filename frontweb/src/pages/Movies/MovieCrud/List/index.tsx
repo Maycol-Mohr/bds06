@@ -5,11 +5,7 @@ import Select from 'react-select';
 import './styles.css';
 
 const List = () => {
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
+  const options = [{ value: 'aventura', label: 'Aventura' }];
 
   return (
     <div className="movie-film-container">

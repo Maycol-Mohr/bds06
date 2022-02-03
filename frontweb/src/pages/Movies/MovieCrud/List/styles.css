@@ -37,11 +37,11 @@
   margin-bottom: 20px;
   border-radius: 4px;
   padding: 15px;
-  color: #ffffff;
+  color: #6c6c6c;
 }
 
 .movie-crud-select__input-container {
-  color: #ffffff;
+  color: #6c6c6c;
   width: 260px;
   height: 30px;
   padding-bottom: 20px !important;
@@ -49,7 +49,7 @@
 }
 
 .movie-crud-select__placeholder {
-  color: #ffffff;
+  color: #6c6c6c;
 }
 
 .movie-crud-select__indicator-separator {
@@ -57,7 +57,7 @@
 }
 
 .select-item Select {
-  color: #ffffff;
+  color: #6c6c6c;
 }
 
 .card-film2 {
