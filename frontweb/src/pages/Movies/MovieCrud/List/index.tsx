@@ -1,4 +1,5 @@
 import { ReactComponent as CardFilm } from 'assets/images/Imagem-Card.svg';
+import Pagination from 'components/Pagination';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
 
@@ -155,6 +156,7 @@ const List = () => {
           </div>
         </div>
       </div>
+      <Pagination />
     </div>
   );
 };
