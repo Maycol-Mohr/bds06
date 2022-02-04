@@ -60,3 +60,14 @@
     width: 1000px;
   }
 }
+
+@media (min-width: 1400px) {
+  .comment-details-card {
+    width: 500px;
+    height: 50px;
+  }
+
+  .comment-details-card p {
+    width: 500px;
+  }
+}

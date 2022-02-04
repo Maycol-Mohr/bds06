@@ -9,55 +9,63 @@ const List = () => {
   const options = [{ value: 'aventura', label: 'Aventura' }];
 
   return (
-    <div className="movie-film-container">
-      <div className="select-item">
-        <Select options={options} classNamePrefix="movie-crud-select" isMulti />
-      </div>
+    <>
+      <div className="movie-film-container">
+        <div className="select-item">
+          <Select className="teste"
+            options={options}
+            classNamePrefix="movie-crud-select"
+            isMulti
+          />
+        </div>
 
-      <div className="row">
-        <div className="card-film2">
-          <div className="col-sm-6">
-            <Link to={'/movies/:movieId'}>
-              <CardFilm className="image" />
-            </Link>
-            <h1>O Retorno do Rei</h1>
-            <h2>2013</h2>
-            <h3>O olho do inimigo está se movendo.</h3>
+        <div className="row">
+          <div className="card-film2">
+            <div className="col-sm-6">
+              <Link to={'/movies/:movieId'}>
+                <CardFilm className="image" />
+              </Link>
+              <h1>O Retorno do Rei</h1>
+              <h2>2013</h2>
+              <h3>O olho do inimigo está se movendo.</h3>
+            </div>
           </div>
-        </div>
-        <div className="card-film2">
-          <div className="col-sm-6">
-            <Link to={'/movies/:movieId'}>
-              <CardFilm className="image" />
-            </Link>
-            <h1>O Retorno do Rei</h1>
-            <h2>2013</h2>
-            <h3>O olho do inimigo está se movendo.</h3>
+          <div className="card-film2">
+            <div className="col-sm-6">
+              <Link to={'/movies/:movieId'}>
+                <CardFilm className="image" />
+              </Link>
+              <h1>O Retorno do Rei</h1>
+              <h2>2013</h2>
+              <h3>O olho do inimigo está se movendo.</h3>
+            </div>
           </div>
-        </div>
-        <div className="card-film2">
-          <div className="col-sm-6">
-            <Link to={'/movies/:movieId'}>
-              <CardFilm className="image" />
-            </Link>
-            <h1>O Retorno do Rei</h1>
-            <h2>2013</h2>
-            <h3>O olho do inimigo está se movendo.</h3>
+          <div className="card-film2">
+            <div className="col-sm-6">
+              <Link to={'/movies/:movieId'}>
+                <CardFilm className="image" />
+              </Link>
+              <h1>O Retorno do Rei</h1>
+              <h2>2013</h2>
+              <h3>O olho do inimigo está se movendo.</h3>
+            </div>
           </div>
-        </div>
-        <div className="card-film2">
-          <div className="col-sm-6">
-            <Link to={'/movies/:movieId'}>
-              <CardFilm className="image" />
-            </Link>
-            <h1>O Retorno do Rei</h1>
-            <h2>2013</h2>
-            <h3>O olho do inimigo está se movendo.</h3>
+          <div className="card-film2">
+            <div className="col-sm-6">
+              <Link to={'/movies/:movieId'}>
+                <CardFilm className="image" />
+              </Link>
+              <h1>O Retorno do Rei</h1>
+              <h2>2013</h2>
+              <h3>O olho do inimigo está se movendo.</h3>
+            </div>
           </div>
         </div>
       </div>
-      <Pagination />
-    </div>
+      <div>
+        <Pagination />
+      </div>
+    </>
   );
 };
 

@@ -67,3 +67,13 @@
     border: 1px solid white;
   }
 }
+
+@media (min-width: 1400px) {
+  .auth-form-container {
+    width: 800px;
+  }
+
+  .login-submit {
+    height: 550px;
+  }
+}
