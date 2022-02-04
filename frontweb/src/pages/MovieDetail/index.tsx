@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import './styles.css';
 import { hasAnyRoles } from 'util/auth';
 import { ReactComponent as CardFilm } from 'assets/images/Imagem-Card.svg';
+import { toast } from 'react-toastify';
 
 type UrlParams = {
   movieId: string;

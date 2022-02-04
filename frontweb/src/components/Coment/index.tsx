@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import CommentDetails from 'components/ComentDetail';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Review } from 'types/review';
 import { BASE_URL, requestBackend } from 'util/requests';
 import './styles.css';
@@ -18,9 +19,14 @@ const Comment = ({ movieId }: Props) => {
       withCredentials: true,
     };
 
-    requestBackend(params).then((response) => {
-      setReview(response.data);
-    });
+    requestBackend(params)
+      .then((response) => {
+        toast.info('Avaliação cadastrada com sucesso!');
+        setReview(response.data);
+      })
+      .catch(() => {
+        toast.error('Erro ao cadastras avaliação!');
+      });
   }, [movieId]);
 
   return (
