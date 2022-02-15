@@ -13,7 +13,7 @@ const MovieDetails = () => {
   const { movieId } = useParams<UrlParams>();
 
   return (
-    <div className="movie-details-container">
+    <div className=" container-fluid movie-details-container">
       <div className="card-film card-e-texto">
         <div>
           <CardFilm className="image" />
