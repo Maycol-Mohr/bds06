@@ -1,8 +1,5 @@
 .main-nav {
   padding-left: 18px;
-  padding-top: 18px;
-  padding-bottom: 17px;
-  height: 68px;
   font-size: 24px;
 }
 
@@ -17,7 +14,7 @@
 
 .nav-logout {
   color: #000000;
-  margin: 19px 10px 19px 210px;
+  margin: 0px 10px 0px 0px;
   border-radius: 10px;
   border: 1px solid #000000;
   padding: 5px;
