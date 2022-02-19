@@ -1,15 +1,16 @@
-import Movies from 'pages/Movies';
+
+import Movie from 'pages/Movie';
+import MovieDetails from 'pages/MovieDetails';
 import { Switch, Route } from 'react-router-dom';
-import MovieDetails from './MovieDetail';
 
 const MovieRoute = () => (
-  <Switch>
+    <Switch>
     <Route path="/movies" exact>
-      <Movies />
+      <Movie />
     </Route>
     <Route path="/movies/:movieId">
       <MovieDetails />
     </Route>
   </Switch>
-);
+)
 export default MovieRoute;

@@ -1,7 +1,7 @@
 import Button from 'components/Button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { requestPostEvaluation } from 'util/requests';
+import { requestPostEvaluation } from 'utils/requests';
 import './styles.css';
 
 type Props = {

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from 'AuthContext';
-import { getTokenData, isAuthenticated } from 'util/auth';
-import { removeAuthData } from 'util/storage';
-import history from 'util/history';
-import 'bootstrap/js/src/collapse.js';
+import { getTokenData, isAuthenticated } from 'utils/auth';
+import { removeAuthData } from 'utils/storage';
+import history from 'utils/history';
 
 import './styles.css';
+import 'bootstrap/js/src/collapse.js';
 
 const Navbar = () => {
   const { authContextData, setAuthContextData } = useContext(AuthContext);
@@ -36,16 +36,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-dark bg-warning main-nav">
+    <nav className="navbar navbar-expand-md navbar-dark bg-primary main-nav">
       <div className="container-fluid">
-        <Link to="/movies" className="nav-logo-text">
+        <Link to="/" className="nav-logo-text">
           <h4>MovieFlix</h4>
         </Link>
         {authContextData.authenticated && (
           <div className="nav-logout">
-            <a href="#logout" onClick={handleLogoutClick}>
-              SAIR
-            </a>
+            <div className="nav-label">
+              <a href="#logout" onClick={handleLogoutClick}>
+                SAIR
+              </a>
+            </div>
           </div>
         )}
       </div>

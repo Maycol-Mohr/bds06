@@ -1,25 +1,21 @@
-import { ReactComponent as MainImage } from 'assets/images/main-image.svg';
-import { isAuthenticated } from 'util/auth';
+import { ReactComponent as AuthImage } from 'assets/images/image-banner.svg';
+import Login from './Login';
 
 import './styles.css';
 
-function Home() {
+const Home = () => {
   return (
     <div className="home-container">
-      <h1>{isAuthenticated() ? 'autenticado' : 'NAO autenticado'}</h1>
-      <div className="home-card">
-        <div className="home-content-container">
-          <h1>Avalie Filmes</h1>
-          <p>
-            Diga o que você achou do seu <br /> filme favorito
-          </p>
-        </div>
-        <div className="home-image-container">
-          <MainImage />
-        </div>
+      <div className="home-banner-container">
+        <h1>Avalie Filmes</h1>
+        <p>Diga o que você achou do seu filme favorito</p>
+        <AuthImage />
+      </div>
+      <div className="home-form-container">
+        <Login />
       </div>
     </div>
   );
-}
+};
 
 export default Home;
