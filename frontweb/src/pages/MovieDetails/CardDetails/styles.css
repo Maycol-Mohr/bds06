@@ -1,9 +1,9 @@
 .img-card-details {
-  width: 340px;
+  width: 100%;
   height: 163px;
 }
 .info-container-details {
-  padding: 10px 0 0 10px;
+  padding: 10px;
 }
 
 .info-container-details h1 {
@@ -48,27 +48,28 @@
   mix-blend-mode: normal;
 }
 
+.sysnops-details {
+  width: 100%;
+  padding: 10px;
+}
+
 @media (min-width: 576px) {
   .img-card-details {
-    width: 560px;
     height: 311px;
   }
 }
 @media (min-width: 768px) {
   .img-card-details {
-    width: 850px;
     height: 382px;
   }
 }
 @media (min-width: 992px) {
   .img-card-details {
-    width: 550px;
     height: 314px;
   }
 }
 @media (min-width: 1200px) {
   .img-card-details {
-    width: 600px;
     height: 314px;
   }
 }
